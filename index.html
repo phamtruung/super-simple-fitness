@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Simple Fitness</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header>
+        <div class="flex-row">
+            <h1>Super Simple Fitness</h1>
+            <button id="export-json" title="Export Json" class="button-icon">y</button>
+            <button id="import-json" title="Import Json" class="button-icon">x</button>
+            <button id="clear-data" title="Clear Data" class="button-icon">t</button>
+        </div>
+        <div>
+            <input style="display: none;" type="file" name="" id="import-file-json" accept="application/json">
+        </div>
+        <nav class="nav">
+            <button class="nav-btn" data-nav="nutrition">Nutrition</button>
+            <button class="nav-btn" data-nav="training">Training</button>
+            <button class="nav-btn" data-nav="body">Body</button>
+        </nav>
+    </header>
+    <main>
+        <!-- Nutrition -->
+        <section class="nav-sec" id="nutrition">
+
+            <!-- Nutrition: Status -->
+            <div class="flex-col solid-heavy" id="meal-status"></div>
+
+            <!-- Nutrition: Meals -->
+            <article>
+                <div class="flex-row solid-bold">
+                    <button id="meal-button-add" title="Add Meal" class="button-icon">*</button>
+                    <p class="label">Meals</p>
+                    <input type="date" id="meal-input-date" />
+                </div>
+                <div class="flex-col" id="meals-list"></div>
+            </article>
+
+            <!-- Nutrition: Foods -->
+            <article>
+                <div class="flex-row solid-bold">
+                    <button id="food-button-add" title="Add Food" class="button-icon">*</button>
+                    <p class="label">Foods Library</p>
+                    <button id="food-button-category" title="Food Category" class="button-icon">H</button>
+                </div>
+                <div class="flex-col" id="foods-list"></div>
+            </article>
+
+        </section>
+
+        <!-- Training -->
+        <section class="nav-sec" id="training">
+
+            <!-- Training: Status -->
+            <div class="flex-col solid-heavy" id="workout-status"></div>
+
+            <!-- Training: Workouts -->
+            <article>
+                <div class="flex-row solid-bold">
+                    <button id="workout-button-add" title="Add Workout" class="button-icon">*</button>
+                    <p class="label">Workouts</p>
+                    <input type="date" id="workout-input-date" />
+                </div>
+                <div class="flex-col" id="workouts-list"></div>
+            </article>
+
+            <!-- Training: Exercises -->
+            <article>
+                <div class="flex-row solid-bold">
+                    <button id="exercise-button-add" title="Add Exercise" class="button-icon">*</button>
+                    <p class="label">Exercises Library</p>
+                    <button id="exercise-button-category" title="Exercise Category" class="button-icon">H</button>
+                </div>
+                <div class="flex-col" id="exercises-list"></div>
+            </article>
+
+        </section>
+
+        <!-- Body -->
+        <section class="nav-sec" id="body">
+
+            <!-- Body: Status -->
+            <div class="flex-col solid-heavy" id="body-status"></div>
+
+            <!-- Body: Info -->
+            <article>
+                <div class="flex-col" id="infor-list">
+
+                    <!-- Body: Fixed -->
+                    <div class="flex-row solid-bold">
+                        <p class="label">Fix</p>
+                    </div>
+
+                    <!-- Body: Gender -->
+                    <div class="flex-row">
+                        <p class="label">Gender</p>
+                        <select class="modal-input" name="Gender" id="body-input-gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+
+                    <!-- Body: Birth -->
+                    <div class="flex-row">
+                        <p class="label">Birth (year)</p>
+                        <input class="modal-input" type="number" id="body-input-birth">
+                    </div>
+
+                    <!-- Body: Height -->
+                    <div class="flex-row">
+                        <p class="label">Height (cm)</p>
+                        <input class="modal-input" type="number" id="body-input-height">
+                    </div>
+
+                    <!-- Body: Change -->
+                    <div class="flex-row solid-bold">
+                        <p class="label">Change</p>
+                    </div>
+
+                    <!-- Body: Weight -->
+                    <div class="flex-row">
+                        <p class="label">Weight (kg)</p>
+                        <input class="modal-input" type="number" id="body-input-weight">
+                    </div>
+
+                    <!-- Body: Target -->
+                    <div class="flex-row solid-bold">
+                        <p class="label">Target</p>
+                    </div>
+
+                    <!-- Body: Target Weight -->
+                    <div class="flex-row">
+                        <p class="label">Weight (kg)</p>
+                        <input class="modal-input" type="number" id="body-input-target-weight">
+                    </div>
+
+                    <!-- Body: Target Workout -->
+                    <div class="flex-row">
+                        <p class="label">Workout (kcal)</p>
+                        <input class="modal-input" type="number" id="body-input-target-workout">
+                    </div>
+
+                </div>
+            </article>
+
+            <!-- Body: Weight History -->
+            <article>
+                <div class="flex-row solid-bold">
+                    <p class="label">Weight History</p>
+                </div>
+                <div class="flex-col" id="weight-list"></div>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- Modal: Meal -->
+    <div class="modal" style="display: none;" id="meal-modal">
+        <div class="modal-content">
+            <div class="flex-row solid-bold"><h2>Meal</h2></div>
+            <hr>
+            <div class="flex-row">
+                <p class="label">Find Food:</p>
+                <input class="modal-input" type="search" 
+                id="modal-search-foods" placeholder="Search Foods">
+            </div>
+            <div class="flex-row">
+                <p class="label">Result:</p>
+                <select class="modal-input" name="Select Food Find" 
+                id="meal-input-food-search"></select>
+            </div>
+            <hr>            
+            <input style="display: none;" type="text" id="meal-input-id" value="">
+            <div class="flex-row">
+                <p class="label">Category:</p>
+                <select class="modal-input" name="Select Category" id="meal-input-category"></select>
+            </div>
+            <div class="flex-row">
+                <p class="label">Food:</p>
+                <select class="modal-input" name="Select Food" id="meal-input-food"></select>
+            </div>
+            <div class="flex-row">
+                <p class="label">Intake:</p>
+                <input class="modal-input" type="number" id="meal-input-amout" value="1">
+            </div>
+            <hr>
+            <div class="flex-col" id="meal-modal-marco">
+            </div>
+            <hr>
+            <div class="flex-row">
+                <button id="meal-modal-take" class="modal-btn">Take</button>
+                <button id="meal-modal-update" class="modal-btn">Update</button>
+                <button id="meal-modal-delete" class="modal-btn">Delete</button>
+                <button id="meal-modal-cancel" class="modal-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Food -->
+    <div class="modal" style="display: none;", id="food-modal">
+        <div class="modal-content">
+            <div class="flex-row solid-bold"><h2>Food</h2></div>
+            <hr>
+            <input style="display: none;" type="text" id="food-input-id" value="">
+            <div class="flex-row">
+                <p class="label">Category:</p>
+                <select class="modal-input" name="Select Category" id="food-input-category"></select>
+            </div>
+            <div class="flex-row">
+                <p class="label">Food:</p>
+                <input class="modal-input" type="text" id="food-input-name" 
+                placeholder="Name of food"></select>
+            </div>
+            <div class="flex-row">
+                <p class="label">Amount:</p>
+                <input class="modal-input" type="number" id="food-input-amout" value="1">
+            </div>
+            <div class="flex-row">
+                <p class="label">Unit:</p>
+                <input class="modal-input" type="text" id="food-input-unit" 
+                placeholder="g, set" value="g">
+            </div>
+            <hr>
+            <div class="flex-row">
+                <p class="label">Protein:</p>
+                <input class="modal-input" type="number" id="food-input-protein" value="0">
+            </div>
+            <div class="flex-row">
+                <p class="label">Carb:</p>
+                <input class="modal-input" type="number" id="food-input-carb" value="0">
+            </div>
+            <div class="flex-row">
+                <p class="label">Fat:</p>
+                <input class="modal-input" type="number" id="food-input-fat" value="0">
+            </div>
+            <div class="flex-row">
+                <p class="label">Fiber:</p>
+                <input class="modal-input" type="number" id="food-input-fiber" value="0">
+            </div>
+            <div class="flex-row">
+                <p class="label">Kcal:</p>
+                <p class="number" id="food-modal-kcal">0</p>
+            </div>
+            <hr>
+            <div class="flex-row">
+                <button id="food-modal-add" class="modal-btn">Add</button>
+                <button id="food-modal-update" class="modal-btn">Update</button>
+                <button id="food-modal-delete" class="modal-btn">Delete</button>
+                <button id="food-modal-cancel" class="modal-btn">Cancel</button>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Food Category -->
+    <div class="modal" style="display: none;" id="food-category-modal">
+        <div class="modal-content">
+            <div class="flex-row solid-bold"><h2>Food Category</h2></div>
+            <hr>
+            <div class="flex-row">
+                <input class="modal-input" type="text" id="category-input-name" placeholder="New Category">
+                <button id="category-modal-add" class="button-icon">*</button>
+            </div>
+            <hr>
+            <div class="flex-col" id="category-modal-list"></div>
+            <hr>
+            <div class="flex-row">
+                <button class="modal-btn" id="category-modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Workout-->
+    <div class="modal" style="display: none;" id="workout-modal">
+        <div class="modal-content">
+            <div class="flex-row solid-bold"><h2>Workout</h2></div>
+            <hr>
+            <div class="flex-row">
+                <p class="label">Find Exercise:</p>
+                <input class="modal-input" type="search" 
+                id="modal-search-exercises" placeholder="Search Exercises">
+            </div>
+            <div class="flex-row">
+                <p class="label">Result:</p>
+                <select class="modal-input" name="Select Exercise Find" 
+                id="workout-input-exercise-search"></select>
+            </div>
+            <hr>            
+            <input style="display: none;" type="text" id="workout-input-id" value="">
+            <div class="flex-row">
+                <p class="label">Category:</p>
+                <select class="modal-input" name="Select Category" id="workout-input-category"></select>
+            </div>
+            <div class="flex-row">
+                <p class="label">Exercise:</p>
+                <select class="modal-input" name="Select Exercise" id="workout-input-exercise"></select>
+            </div>
+            <div class="flex-row">
+                <p class="label">Duration:</p>
+                <input class="modal-input" type="number" id="workout-input-duration" value="1">
+            </div>
+            <hr>
+            <div class="flex-row">
+                <p class="label">Sets:</p>
+                <button class="button-icon" id="workout-modal-add-set">*</button>
+            </div>
+            <div class="flex-col" id="workout-modal-sets-list"></div>
+            <hr>
+            <div class="flex-row">
+                <button id="workout-modal-action" class="modal-btn">Action</button>
+                <button id="workout-modal-update" class="modal-btn">Update</button>
+                <button id="workout-modal-delete" class="modal-btn">Delete</button>
+                <button id="workout-modal-cancel" class="modal-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Exercise -->
+    <div class="modal" style="display: none;", id="exercise-modal">
+        <div class="modal-content">
+            <div class="flex-row solid-bold"><h2>Exercise</h2></div>
+            <hr>
+            <input style="display: none;" type="text" id="exercise-input-id" value="">
+            <div class="flex-row">
+                <p class="label">Category:</p>
+                <select class="modal-input" name="Select Category" id="exercise-input-category"></select>
+            </div>
+            <div class="flex-row">
+                <p class="label">Exercise:</p>
+                <input class="modal-input" type="text" id="exercise-input-name" 
+                placeholder="Name of exercise"></select>
+            </div>
+            <div class="flex-row">
+                <p class="label">Kcal/Hour:</p>
+                <input class="modal-input" type="number" id="exercise-input-kcalPerHour" value="1">
+            </div>
+            <hr>
+            <div class="flex-row">
+                <button id="exercise-modal-add" class="modal-btn">Add</button>
+                <button id="exercise-modal-update" class="modal-btn">Update</button>
+                <button id="exercise-modal-delete" class="modal-btn">Delete</button>
+                <button id="exercise-modal-cancel" class="modal-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Exercise Category -->
+    <div class="modal" style="display: none;" id="exercise-category-modal">
+        <div class="modal-content">
+            <div class="flex-row solid-bold"><h2>Exercise Category</h2></div>
+            <hr>
+            <div class="flex-row">
+                <input class="modal-input" type="text" id="exercise-category-input-name" placeholder="New Category">
+                <button id="exercise-category-modal-add" class="button-icon">*</button>
+            </div>
+            <hr>
+            <div class="flex-col" id="exercise-category-modal-list"></div>
+            <hr>
+            <div class="flex-row">
+                <button class="modal-btn" id="exercise-category-modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="0-helpers.js"></script>
+    <script src="1-data.js"></script>
+    <script src="2-elements.js"></script>
+    <script src="3-meals.js"></script>
+    <script src="4-foods.js"></script>
+    <script src="5-workout.js"></script>
+    <script src="6-exercises.js"></script>
+    <script src="7-body.js"></script>
+    <!-- <script src="8-chart.js"></script> -->
+    <script src="9-main.js"></script>
+</body>
+
+</html>
