@@ -1,12 +1,12 @@
 @font-face {
     font-family: 'IconFont'; /* tên bạn đặt cho font */
-    src: url('fonts/Aristotelica-Icons-Regular-trial.ttf') format('truetype');
+    src: url('Aristotelica-Icons-Regular-trial.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'MainFont'; /* tên bạn đặt cho font */
-    src: url('fonts/JetBrainsMono-Regular.woff2') format('woff2');
+    src: url('JetBrainsMono-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -325,3 +325,4 @@ input[type="number"] {
     border-radius: var(--radius);
     color: var(--bg-second);
 }
+
