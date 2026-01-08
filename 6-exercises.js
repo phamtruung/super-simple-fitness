@@ -120,7 +120,7 @@ const ExerciseUI = {
 
         // Add To Workout
         elButtonAdd.addEventListener('click', () => {
-            const newWorkout = new Workout(exercise.id, 30, new Date());
+            const newWorkout = new Workout(Helper.UUID(), exercise.id, 30, new Date());
             dataTemp.workouts.addWorkout(newWorkout)
             dataTemp.save();
             WorkoutUI.renderList();
@@ -304,3 +304,4 @@ document.addEventListener("DOMContentLoaded", () => {
     ExerciseUI.renderList();
     ExerciseUI.listen();
 })
+
