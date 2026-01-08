@@ -136,7 +136,7 @@ const FoodUi = {
 
         // Add To Meal
         elButtonAdd.addEventListener('click', () => {
-            const newMeal = new Meal(food.id, 1, new Date());
+            const newMeal = new Meal(Helper.UUID(), food.id, 1, new Date());
             dataTemp.meals.addMeal(newMeal)
             dataTemp.save();
             MealUI.renderList();
@@ -362,3 +362,4 @@ document.addEventListener("DOMContentLoaded", () => {
     FoodUi.renderList();
     FoodUi.listen();
 })
+
