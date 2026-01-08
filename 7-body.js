@@ -35,10 +35,10 @@ const BodyUI = {
         const elWeightList = El.Body.WeightList.getElementsByTagName('div');
         const listOfWeight = [];
         Array.from(elWeightList).forEach(elWeight => {
-            const inputList = elWeight.getElementsByTagName('p');
+            const inputList = elWeight.getElementsByTagName('input');
             if(inputList.length === 0) return;
-            const dateStr = Helper.dateToString(inputList[0].textContent);
-            const weightValue = parseFloat(inputList[1].textContent);
+            const dateStr = Helper.dateToString(inputList[0].value);
+            const weightValue = parseFloat(inputList[1].value);
             const weightSet = {date: dateStr, weight: weightValue};
             listOfWeight.push(weightSet);
         });
@@ -54,26 +54,10 @@ const BodyUI = {
         if(dataTemp.human.listOfWeight.length === 0) return;
 
         dataTemp.human.listOfWeight.forEach(weightSet => {
-            
+
             // Div Row
             const elDivRow = document.createElement('div');
             elDivRow.className = 'flex-row underline';
-
-            // Date
-            const elDate = document.createElement('p');
-            elDate.className = 'label';
-            elDate.textContent = weightSet.date;
-            elDivRow.appendChild(elDate);
-
-            // Weight
-            const elWeight = document.createElement('p');
-            elWeight.textContent = weightSet.weight;
-            elDivRow.appendChild(elWeight);
-
-            // Unit
-            const elUnit = document.createElement('p');
-            elUnit.textContent = 'kg';
-            elDivRow.appendChild(elUnit);
 
             // Button Delete
             const elButtonDelete = document.createElement('button');
@@ -81,14 +65,46 @@ const BodyUI = {
             elButtonDelete.textContent = 't';
             elDivRow.appendChild(elButtonDelete);
 
+            // Date
+            const elDate = document.createElement('input');
+            elDate.type = 'date';
+            elDate.className = 'modal-input';
+            elDate.value = Helper.dateToString(weightSet.date);
+            elDivRow.appendChild(elDate);
+
+            // Weight
+            const elWeight = document.createElement('input');
+            elWeight.type = 'number';
+            elWeight.className = 'modal-input';
+            elWeight.value = weightSet.weight;
+            elDivRow.appendChild(elWeight);
+
+            // Unit
+            const elUnit = document.createElement('p');
+            elUnit.textContent = 'kg';
+            elDivRow.appendChild(elUnit);
+
             // Append
             El.Body.WeightList.appendChild(elDivRow);
+
+            // Change Date
+            elDate.addEventListener('change', () => {
+                this.saveInfor();
+                ChartUI.renderChartWeight();
+            })
+
+            // Change kg
+            elWeight.addEventListener('change', () => {
+                this.saveInfor();
+                ChartUI.renderChartWeight();
+            })
 
             // Delete Weight
             elButtonDelete.addEventListener('click', () => {
                 elDivRow.innerHTML = '';
                 this.saveInfor();
                 this.renderListOfWeight();
+                ChartUI.renderChartWeight();
             })
         });
     },
@@ -105,7 +121,7 @@ const BodyUI = {
                 WorkoutUI.renderStatus();
 
                 // Change Weight Render List of Weight
-                if(elInput.id === 'body-input-weight') {
+                if (elInput.id === 'body-input-weight') {
                     const newWeight = {
                         date: Helper.dateToString(new Date()),
                         weight: parseFloat(e.target.value)
@@ -113,6 +129,12 @@ const BodyUI = {
                     dataTemp.human.listOfWeight.push(newWeight);
                     dataTemp.save()
                     this.renderListOfWeight();
+                    ChartUI.renderChartWeight();
+                }
+
+                // Change Target Weight
+                if (elInput.id === 'body-input-target-weight') {
+                    ChartUI.renderChartWeight();
                 }
             })
         });

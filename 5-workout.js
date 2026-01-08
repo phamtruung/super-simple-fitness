@@ -302,6 +302,7 @@ const WorkoutUI = {
             this.renderList();
             this.renderStatus();
             MealUI.renderStatus();
+            ChartUI.renderChartKcal();
 
             El.Workout.Modal.style.display = 'none';
         });
@@ -329,6 +330,7 @@ const WorkoutUI = {
             this.renderList();
             this.renderStatus();
             MealUI.renderStatus();
+            ChartUI.renderChartKcal();
 
             El.Workout.Modal.style.display = 'none'
         });
@@ -342,6 +344,7 @@ const WorkoutUI = {
             this.renderList();
             this.renderStatus();
             MealUI.renderStatus();
+            ChartUI.renderChartKcal();
 
             El.Workout.Modal.style.display = 'none';
         });

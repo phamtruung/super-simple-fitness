@@ -22,7 +22,7 @@ const AppUi = {
     renderFullPage() {
         MealUI.renderStatus();
         MealUI.renderList();
-        FoodUi.renderList();
+        FoodUI.renderList();
         WorkoutUI.renderStatus();
         WorkoutUI.renderList();
         ExerciseUI.renderList();

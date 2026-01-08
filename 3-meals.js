@@ -250,6 +250,7 @@ const MealUI = {
             dataTemp.save();
             this.renderList();
             this.renderStatus();
+            ChartUI.renderChartKcal();
             El.Meal.Modal.style.display = 'none';
         });
 
@@ -262,6 +263,7 @@ const MealUI = {
             dataTemp.save();
             this.renderList();
             this.renderStatus();
+            ChartUI.renderChartKcal();
             El.Meal.Modal.style.display = 'none'
         });
 
@@ -273,6 +275,7 @@ const MealUI = {
             dataTemp.save();
             this.renderList();
             this.renderStatus();
+            ChartUI.renderChartKcal();
             El.Meal.Modal.style.display = 'none';
         });
 

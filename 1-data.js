@@ -510,6 +510,20 @@ class Data {
         const target = this.human.getMacroTarget(kcalBurn);
         return target;
     }
+    getAverageWeightByMonth(yearMonth) {
+        if (this.human.listOfWeight.length === 0) return 0;
+        
+        let listWeight = [];
+        this.human.listOfWeight.forEach(weightSet => {
+            const date = weightSet.date;
+            if (Helper.dateToStringMonth(date) === yearMonth) {
+                listWeight.push(weightSet.weight);
+            }
+        })
+        const averageWeight = Helper.average(listWeight);
+        return averageWeight.toFixed(1);
+        
+    }
     //#region DefaultNutrion
     createDefaultNutrition() {
         const foods = new Foods();

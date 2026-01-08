@@ -123,6 +123,9 @@ select:hover {
 input[type="number"] {
     text-align: right;
 }
+.header-input {
+    width: var(--w-input);
+}
 /* ============================== Progress */
 .progress-kcal,
 .progress-protein,
@@ -303,6 +306,10 @@ input[type="number"] {
     min-width: 30%;
     max-width: 50%;
 }
+.modal-input-max {
+    background-color: var(--bg-second);
+    flex: 1;
+}
 .modal-btn {
     background-color: var(--fg-second);
     flex: 1;
@@ -325,4 +332,11 @@ input[type="number"] {
     border-radius: var(--radius);
     color: var(--bg-second);
 }
-
+/* ============================== SVG */
+svg {
+    display: block;
+    width: 100%;
+    height: 300px;
+    background-color: var(--bg-second);
+    margin-top: 1rem;
+}

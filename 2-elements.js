@@ -105,6 +105,7 @@ const El = Object.freeze({
         CategoryModalList: document.getElementById('exercise-category-modal-list'),
         CategoryModalClose: document.getElementById('exercise-category-modal-close'),
     },
+
     //#region Body
     Body: {
         Status: document.getElementById('body-status'),
@@ -116,6 +117,16 @@ const El = Object.freeze({
         InputTargetWeight: document.getElementById('body-input-target-weight'),
         InputTargetWorkout: document.getElementById('body-input-target-workout'),
         WeightList: document.getElementById('weight-list'),
+    },
+
+    //#region Chart
+    Chart: {
+        KcalInputWeek: document.getElementById('chart-kcal-input-week'),
+        KcalChart: document.getElementById('chart-kcal'),
+        TargetKcal: document.getElementById('chart-kcal-target'),
+        WeightInputYear: document.getElementById('chart-weight-input-year'),
+        WeightChart: document.getElementById('chart-weight'),
+        TargerWeight: document.getElementById('chart-weight-target'),
     }
 });
 

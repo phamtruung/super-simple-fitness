@@ -126,7 +126,7 @@ const ExerciseUI = {
             WorkoutUI.renderList();
             WorkoutUI.renderStatus();
             MealUI.renderStatus();
-
+            ChartUI.renderChartKcal();
         });
 
         // Edit Exercise
@@ -188,7 +188,7 @@ const ExerciseUI = {
 
             // Input Category Name
             const elInputName = document.createElement('input');
-            elInputName.className = 'modal-input';
+            elInputName.className = 'modal-input-max';
             elInputName.value = category.name;
             elDivRow.appendChild(elInputName);
 
@@ -275,6 +275,7 @@ const ExerciseUI = {
             WorkoutUI.renderList();
             WorkoutUI.renderStatus();
             MealUI.renderStatus();
+            ChartUI.renderChartKcal();
 
             El.Exercise.Modal.style.display = 'none'
         });
@@ -289,6 +290,7 @@ const ExerciseUI = {
             WorkoutUI.renderList();
             WorkoutUI.renderStatus();
             MealUI.renderStatus();
+            ChartUI.renderChartKcal();
 
             El.Exercise.Modal.style.display = 'none'
         });
@@ -304,4 +306,3 @@ document.addEventListener("DOMContentLoaded", () => {
     ExerciseUI.renderList();
     ExerciseUI.listen();
 })
-

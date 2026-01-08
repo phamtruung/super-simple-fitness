@@ -20,9 +20,10 @@
             <input style="display: none;" type="file" name="" id="import-file-json" accept="application/json">
         </div>
         <nav class="nav">
-            <button class="nav-btn" data-nav="nutrition">Nutrition</button>
-            <button class="nav-btn" data-nav="training">Training</button>
+            <button class="nav-btn" data-nav="nutrition">Nutri</button>
+            <button class="nav-btn" data-nav="training">Train</button>
             <button class="nav-btn" data-nav="body">Body</button>
+            <button class="nav-btn" data-nav="chart">Chart</button>
         </nav>
     </header>
     <main>
@@ -37,7 +38,7 @@
                 <div class="flex-row solid-bold">
                     <button id="meal-button-add" title="Add Meal" class="button-icon">*</button>
                     <p class="label">Meals</p>
-                    <input type="date" id="meal-input-date" />
+                    <input class="header-input" type="date" id="meal-input-date" />
                 </div>
                 <div class="flex-col" id="meals-list"></div>
             </article>
@@ -65,7 +66,7 @@
                 <div class="flex-row solid-bold">
                     <button id="workout-button-add" title="Add Workout" class="button-icon">*</button>
                     <p class="label">Workouts</p>
-                    <input type="date" id="workout-input-date" />
+                    <input class="header-input" type="date" id="workout-input-date" />
                 </div>
                 <div class="flex-col" id="workouts-list"></div>
             </article>
@@ -155,6 +156,38 @@
                     <p class="label">Weight History</p>
                 </div>
                 <div class="flex-col" id="weight-list"></div>
+            </article>
+        </section>
+
+        <!-- Chart -->
+        <section class="nav-sec" id="chart">
+
+            <!-- Chart: Intake Burn -->
+            <article>
+                <div class="flex-row solid-bold">
+                    <p class="label">InOutKcal</p>
+                    <input class="header-input" type="week" id="chart-kcal-input-week" />
+                </div>
+                <div class="flex-row">
+                    <p class="label">Target Kcal Net:</p>
+                    <p id="chart-kcal-target"></p>
+                    <p>kcal</p>
+                </div>
+                <svg class="flex-col" id="chart-kcal"></svg>
+            </article>
+
+            <!-- Chart: Weight -->
+            <article>
+                <div class="flex-row solid-bold">
+                    <p class="label">Weight</p>
+                    <input class="header-input" type="number" id="chart-weight-input-year" />
+                </div>
+                <div class="flex-row">
+                    <p class="label">Target Weight:</p>
+                    <p id="chart-weight-target"></p>
+                    <p>kg</p>
+                </div>
+                <svg class="flex-col" id="chart-weight"></svg>
             </article>
 
         </section>
@@ -264,7 +297,7 @@
             <div class="flex-row solid-bold"><h2>Food Category</h2></div>
             <hr>
             <div class="flex-row">
-                <input class="modal-input" type="text" id="category-input-name" placeholder="New Category">
+                <input class="modal-input-max" type="text" id="category-input-name" placeholder="New Category">
                 <button id="category-modal-add" class="button-icon">*</button>
             </div>
             <hr>
@@ -356,7 +389,7 @@
             <div class="flex-row solid-bold"><h2>Exercise Category</h2></div>
             <hr>
             <div class="flex-row">
-                <input class="modal-input" type="text" id="exercise-category-input-name" placeholder="New Category">
+                <input class="modal-input-max" type="text" id="exercise-category-input-name" placeholder="New Category">
                 <button id="exercise-category-modal-add" class="button-icon">*</button>
             </div>
             <hr>
@@ -376,9 +409,8 @@
     <script src="5-workout.js"></script>
     <script src="6-exercises.js"></script>
     <script src="7-body.js"></script>
-    <!-- <script src="8-chart.js"></script> -->
+    <script src="8-chart.js"></script>
     <script src="9-main.js"></script>
 </body>
-
 
 </html>

@@ -1,4 +1,4 @@
-const FoodUi = {
+const FoodUI = {
 
     //#region FoodList
     renderList() {
@@ -141,6 +141,7 @@ const FoodUi = {
             dataTemp.save();
             MealUI.renderList();
             MealUI.renderStatus();
+            ChartUI.renderChartKcal();
         });
 
         // Edit Food
@@ -214,7 +215,7 @@ const FoodUi = {
 
             // Input Category Name
             const elInputName = document.createElement('input');
-            elInputName.className = 'modal-input';
+            elInputName.className = 'modal-input-max';
             elInputName.value = category.name;
             elDivRow.appendChild(elInputName);
 
@@ -336,6 +337,7 @@ const FoodUi = {
             this.renderList();
             MealUI.renderList();
             MealUI.renderStatus();
+            ChartUI.renderChartKcal();
             El.Food.Modal.style.display = 'none'
         });
 
@@ -359,7 +361,6 @@ const FoodUi = {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    FoodUi.renderList();
-    FoodUi.listen();
+    FoodUI.renderList();
+    FoodUI.listen();
 })
-
