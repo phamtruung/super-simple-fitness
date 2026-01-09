@@ -851,53 +851,59 @@ const defaultData = {
         "fat": 0.5,
         "fiber": 1,
         "kcal": 44.5
+      },
+      {
+        "id": "v4mk6b7mah",
+        "name": "Cafe đen đường",
+        "categoryId": "pkmk69r60q",
+        "amount": 1,
+        "unit": "ly",
+        "protein": 0.5,
+        "carb": 10,
+        "fat": 0,
+        "fiber": 0,
+        "kcal": 42
+      },
+      {
+        "id": "wfmk6b8pj5",
+        "name": "Cafe sữa",
+        "categoryId": "pkmk69r60q",
+        "amount": 1,
+        "unit": "ly",
+        "protein": 2,
+        "carb": 25,
+        "fat": 5,
+        "fiber": 0,
+        "kcal": 153
+      },
+      {
+        "id": "bvmk6b9eyn",
+        "name": "Bạc xỉu",
+        "categoryId": "pkmk69r60q",
+        "amount": 1,
+        "unit": "ly",
+        "protein": 4,
+        "carb": 27,
+        "fat": 5,
+        "fiber": 0,
+        "kcal": 169
+      },
+      {
+        "id": "i3mk6b9x1k",
+        "name": "Trà sữa",
+        "categoryId": "pkmk69r60q",
+        "amount": 1,
+        "unit": "ly",
+        "protein": 3,
+        "carb": 50,
+        "fat": 10,
+        "fiber": 1,
+        "kcal": 302
       }
     ]
   },
   "meals": {
     "list": [
-      {
-        "id": "rtmk4slegc",
-        "foodId": "m8mk4sh5jj",
-        "amount": 1,
-        "date": "2026-01-08"
-      },
-      {
-        "id": "b2mk4zrnza",
-        "foodId": "wmmk4zrhyj",
-        "amount": 1,
-        "date": "2026-01-08"
-      },
-      {
-        "id": "v7mk5jso1j",
-        "foodId": "nnmk5jskyf",
-        "amount": 2,
-        "date": "2026-01-08"
-      },
-      {
-        "id": "51mk5k0fz5",
-        "foodId": "zemk5k01ck",
-        "amount": 3,
-        "date": "2026-01-08"
-      },
-      {
-        "id": "yemk5k39gw",
-        "foodId": "x2mk5k34wu",
-        "amount": 1,
-        "date": "2026-01-08"
-      },
-      {
-        "id": "hcmk5k5b2x",
-        "foodId": "f8mk5k55c4",
-        "amount": 0.8,
-        "date": "2026-01-08"
-      },
-      {
-        "id": "7jmk5k8g5v",
-        "foodId": "3omk5k8cvx",
-        "amount": 1,
-        "date": "2026-01-08"
-      }
     ]
   },
   "exercises": {
@@ -1048,29 +1054,6 @@ const defaultData = {
   },
   "workouts": {
     "list": [
-      {
-        "id": "lxmk4zoihf",
-        "exerciseId": "n0mk4zofdv",
-        "duration": 40,
-        "date": "2026-01-08",
-        "sets": [
-          {
-            "reps": "50",
-            "volume": "10"
-          },
-          {
-            "reps": "50",
-            "volume": "13.6"
-          }
-        ]
-      },
-      {
-        "id": "bpmk65u59l",
-        "exerciseId": "e1",
-        "duration": 45,
-        "date": "2026-01-09",
-        "sets": []
-      }
     ]
   },
   "human": {
@@ -1079,16 +1062,12 @@ const defaultData = {
     "height": 165,
     "weight": 72,
     "targetWeight": 68,
-    "kcalWorkoutTarget": 400,
+    "kcalWorkoutTarget": 300,
     "listOfWeight": [
       {
         "date": "2025-12-01",
         "weight": 75
       },
-      {
-        "date": "2026-01-08",
-        "weight": 72
-      }
     ],
     "kcalChangePerDay": 300
   }
