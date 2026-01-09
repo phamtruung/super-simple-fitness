@@ -204,12 +204,13 @@ const ExerciseUI = {
             // Change Input Name
             elInputName.addEventListener('change', (e) => {
                 category.name = e.target.value;
+                dataTemp.save();
             })
 
             // Delete Category
             elButtonDelete.addEventListener('click', () => {
                 dataTemp.exercises.deleteCategoryById(category.id);
-                dataTemp.save()
+                dataTemp.save();
                 this.showModalCategory();
             })
         });
@@ -306,3 +307,4 @@ document.addEventListener("DOMContentLoaded", () => {
     ExerciseUI.renderList();
     ExerciseUI.listen();
 })
+
