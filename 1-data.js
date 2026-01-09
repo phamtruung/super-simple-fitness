@@ -524,6 +524,13 @@ class Data {
         return averageWeight.toFixed(1);
         
     }
+    getKcalNet() {
+        const today = Helper.dateToString(new Date());
+        const kcalIn = this.getMacroTarget(today).kcal;
+        const kcalOut = this.getTotalKcalWorkoutByDate(today);
+        const kcalNet = kcalIn - kcalOut;
+        return kcalNet;
+    }
     clear() {
         this.foods = new Foods();
         this.meals = new Meals();
