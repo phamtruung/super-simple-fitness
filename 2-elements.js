@@ -33,6 +33,7 @@ const El = Object.freeze({
     //#region Element Food
     Food: {
         ButtonAdd: document.getElementById('food-button-add'),
+        NumberFoods: document.getElementById('number-of-foods'),
         ButtonCategory: document.getElementById('food-button-category'),
         List: document.getElementById('foods-list'),
 
@@ -86,6 +87,7 @@ const El = Object.freeze({
     //#region Element Exercise
     Exercise: {
         ButtonAdd: document.getElementById('exercise-button-add'),
+        NumberExercises: document.getElementById('number-of-exercises'),
         ButtonCategory: document.getElementById('exercise-button-category'),
         List: document.getElementById('exercises-list'),
 

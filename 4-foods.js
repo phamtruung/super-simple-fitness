@@ -4,6 +4,9 @@ const FoodUI = {
     renderList() {
         El.Food.List.innerHTML = '';
 
+        // Number of Foods
+        El.Food.NumberFoods.textContent = dataTemp.foods.list.length;
+
         // Category List
         const categoriesList = dataTemp.foods.sortCategoriesByName();
 
@@ -33,7 +36,7 @@ const FoodUI = {
         // Button Show
         const elButtonShow = document.createElement('button');
         elButtonShow.className = 'button-icon';
-        elButtonShow.textContent = ':'
+        elButtonShow.textContent = ';'
         elDivCategoryHeader.appendChild(elButtonShow);
 
         // Category Name
@@ -52,7 +55,7 @@ const FoodUI = {
 
         // Div Food List
         const elFoodsList = document.createElement('div');
-        elFoodsList.style.display = 'none';
+        elFoodsList.style.display = 'block';
         elFoodsList.className = 'flex-col';
 
         // Render Foods List
@@ -237,7 +240,7 @@ const FoodUI = {
             // Delete Category
             elButtonDelete.addEventListener('click', () => {
                 dataTemp.foods.deleteCategoryById(category.id);
-                dataTemp.save();
+                dataTemp.save()
                 this.showModalCategory();
             })
         });
@@ -365,4 +368,3 @@ document.addEventListener("DOMContentLoaded", () => {
     FoodUI.renderList();
     FoodUI.listen();
 })
-

@@ -524,116 +524,6 @@ class Data {
         return averageWeight.toFixed(1);
         
     }
-    //#region DefaultNutrion
-    createDefaultNutrition() {
-        const foods = new Foods();
-        const meals = new Meals();
-
-        // Category mặc định
-        const catMain = new FoodCategory("c1", "Món chính");
-        const catSnack = new FoodCategory("c2", "Món ăn nhẹ");
-        const catFruit = new FoodCategory("c3", "Trái cây");
-        const catDrink = new FoodCategory("c4", "Nước");
-        const catUnknow = new FoodCategory();
-
-        foods.addCategory(catMain);
-        foods.addCategory(catSnack);
-        foods.addCategory(catFruit);
-        foods.addCategory(catDrink);
-        foods.addCategory(catUnknow);
-
-        // Món chính
-        foods.addFood(new Food("f1", "Cơm tấm sườn", "c1", 1, "phần", 25, 60, 20, 5));
-        foods.addFood(new Food("f2", "Hủ tiếu mì thịt", "c1", 1, "tô", 20, 55, 15, 4));
-        foods.addFood(new Food("f3", "Bún bò Huế", "c1", 1, "tô", 22, 50, 10, 3));
-
-        // Món ăn nhẹ
-        foods.addFood(new Food("f4", "Bột chiên trứng", "c2", 1, "dĩa", 12, 40, 20, 2));
-        foods.addFood(new Food("f5", "Gỏi cuốn", "c2", 1, "cuốn", 5, 10, 2, 1));
-        foods.addFood(new Food("f6", "Bì cuốn", "c2", 1, "cuốn", 6, 12, 3, 1));
-        foods.addFood(new Food("f7", "Bột chiên", "c2", 1, "dĩa", 10, 35, 18, 2));
-
-        // Trái cây
-        foods.addFood(new Food("f8", "Táo", "c3", 100, "g", 0.3, 14, 0.2, 2.4));
-        foods.addFood(new Food("f9", "Chuối", "c3", 100, "g", 1.1, 23, 0.3, 2.6));
-        foods.addFood(new Food("f10", "Nho", "c3", 100, "g", 0.7, 18, 0.2, 0.9));
-
-        // Nước
-        foods.addFood(new Food("f11", "Nước cam", "c4", 1, "ly", 2, 26, 0.5, 0.5));
-        foods.addFood(new Food("f12", "Nước mía", "c4", 1, "ly", 0, 65, 0, 0));
-        foods.addFood(new Food("f13", "Nước dừa", "c4", 1, "ly", 1, 9, 0.5, 2));
-
-        // Food Unknown
-        foods.addFood(new Food());
-
-        // Meal mẫu (có thể thêm vài món để demo)
-        meals.addMeal(new Meal("m1", "f1", 1, new Date())); // ăn cơm tấm sườn
-        meals.addMeal(new Meal("m2", "f8", 2, new Date())); // ăn táo
-        meals.addMeal(new Meal("m3", "f11", 1, new Date())); // uống nước cam
-
-        this.foods = foods;
-        this.meals = meals;
-    }
-    //#region DefaultTraining
-    createDefaultTraining() {
-        const exercises = new Exercises();
-        const workouts = new Workouts();
-
-        // Category mặc định
-        const catAerobic = new ExerciseCategory("ec1", "Aerobic");
-        const catStrength = new ExerciseCategory("ec2", "Strength");
-        const catFlexibility = new ExerciseCategory("ec3", "Flexibility");
-        const catBalance = new ExerciseCategory("ec4", "Balance");
-        const catUnknow = new ExerciseCategory();
-
-        exercises.addCategory(catAerobic);
-        exercises.addCategory(catStrength);
-        exercises.addCategory(catFlexibility);
-        exercises.addCategory(catBalance);
-        exercises.addCategory(catUnknow);
-
-        // Aerobic
-        exercises.addExercise(new Exercise("e1", "ec1", "Running", 500));
-        exercises.addExercise(new Exercise("e2", "ec1", "Biking", 400));
-        exercises.addExercise(new Exercise("e3", "ec1", "Swimming", 300));
-
-        // Strength
-        exercises.addExercise(new Exercise("e4", "ec2", "Pull-ups", 300));
-        exercises.addExercise(new Exercise("e5", "ec2", "Push-ups", 400));
-        exercises.addExercise(new Exercise("e6", "ec2", "Bench Press", 200));
-
-        // Flexibility
-        exercises.addExercise(new Exercise("e7", "ec3", "Yoga", 200));
-        exercises.addExercise(new Exercise("e8", "ec3", "Stretching", 150));
-
-        // Balance
-        exercises.addExercise(new Exercise("e9", "ec4", "Tai Chi", 200));
-        exercises.addExercise(new Exercise("e10", "ec4", "Plank", 250));
-
-        // Exercise Unknown
-        exercises.addExercise(new Exercise());
-
-        // Workouts mẫu (có thể thêm vài món để demo)
-        workouts.addWorkout(new Workout("w1", "e1", 30, new Date())); // Running
-        const benchPress = new Workout("w2", "e6", 10, new Date()); // BenchPress
-        benchPress.sets = [
-            {reps: 12, volume: 10},
-            {reps: 10, volume: 15},
-            {reps: 8, volume: 20},
-            {reps: 6, volume: 25},
-        ];
-        workouts.addWorkout(benchPress); 
-        workouts.addWorkout(new Workout("w3", "e10", 5, new Date())); // Plank
-
-        this.exercises = exercises;
-        this.workouts = workouts;
-    }
-    //#region DefaultHuman
-    createDefaultHuman() {
-        const today = Helper.dateToString(new Date());
-        const human = new Human('male', 1984, 167, 75, 68, 500, [{date: today, weight: 75}]);
-        this.human = human;
-    }
     clear() {
         this.foods = new Foods();
         this.meals = new Meals();
@@ -710,7 +600,9 @@ class Data {
                 this.createDefaultHuman();
             }
         }
-
+        if (this.foods.list.length === 0) {
+            this.import(defaultData)
+        }
     }
 }
 

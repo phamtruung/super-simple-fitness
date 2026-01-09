@@ -198,7 +198,6 @@ class InOutChart {
 
         // Points Difference
         difference.forEach((d,i)=>{
-            console.log(d)
             this.svg.appendChild(this.el('circle',{
                 cx:this.scaleX(i, monthGap)+barWidth/2,
                 cy:this.scaleY(d,maxVal),
@@ -501,6 +500,5 @@ document.addEventListener("DOMContentLoaded", () => {
     ChartUI.renderChartKcal();
     ChartUI.renderChartWeight();
     ChartUI.listen();
-
 
 })

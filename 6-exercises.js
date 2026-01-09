@@ -4,6 +4,9 @@ const ExerciseUI = {
     renderList() {
         El.Exercise.List.innerHTML = '';
 
+        // Number of Exercises
+        El.Exercise.NumberExercises.textContent = dataTemp.exercises.list.length;
+
         // Category List
         const categoriesList = dataTemp.exercises.sortCategoriesByName();
 
@@ -33,7 +36,7 @@ const ExerciseUI = {
         // Button Show
         const elButtonShow = document.createElement('button');
         elButtonShow.className = 'button-icon';
-        elButtonShow.textContent = ':'
+        elButtonShow.textContent = ';'
         elDivCategoryHeader.appendChild(elButtonShow);
 
         // Category Name
@@ -52,7 +55,7 @@ const ExerciseUI = {
 
         // Div Exercises List
         const elExercisesList = document.createElement('div');
-        elExercisesList.style.display = 'none';
+        elExercisesList.style.display = 'block';
         elExercisesList.className = 'flex-col';
 
         // Render Foods List
@@ -307,4 +310,3 @@ document.addEventListener("DOMContentLoaded", () => {
     ExerciseUI.renderList();
     ExerciseUI.listen();
 })
-
