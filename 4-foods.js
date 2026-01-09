@@ -231,12 +231,13 @@ const FoodUI = {
             // Change Input Name
             elInputName.addEventListener('change', (e) => {
                 category.name = e.target.value;
+                dataTemp.save();
             })
 
             // Delete Category
             elButtonDelete.addEventListener('click', () => {
                 dataTemp.foods.deleteCategoryById(category.id);
-                dataTemp.save()
+                dataTemp.save();
                 this.showModalCategory();
             })
         });
@@ -364,3 +365,4 @@ document.addEventListener("DOMContentLoaded", () => {
     FoodUI.renderList();
     FoodUI.listen();
 })
+
