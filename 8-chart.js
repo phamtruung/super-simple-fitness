@@ -427,7 +427,7 @@ ChartUI = {
         };
 
         // Chart InOut
-        El.Chart.TargetKcal.innerHTML = dataTemp.human.getBMR().toFixed(0);
+        El.Chart.TargetKcal.innerHTML = dataTemp.getMacroTarget(new Date()).kcal.toFixed(0);
         const kcalChart = new InOutChart(El.Chart.KcalChart, intakeList, burnList, listWeekday, config);
         kcalChart.render();
     },
@@ -501,5 +501,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ChartUI.renderChartKcal();
     ChartUI.renderChartWeight();
     ChartUI.listen();
+
 
 })
